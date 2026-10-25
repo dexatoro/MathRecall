@@ -18,7 +18,8 @@ export function validateBackup(input:unknown):Backup {
   if(data.states.length!==data.cards.length||new Set(data.states.map(s=>s.cardId)).size!==data.cards.length) throw Error('У каждой карточки должно быть одно состояние FSRS')
   for(const s of data.states) if(!cards.has(s.cardId)||(s.reps>0&&!s.last_review)||(s.reps===0&&s.state!==0)||(s.state===0&&s.reps>0)) throw Error('Некорректное состояние FSRS')
   for(const l of data.logs) if(!cards.has(l.cardId)) throw Error('История ссылается на отсутствующую карточку')
-  for(const s of data.states) if(data.logs.filter(l=>l.cardId===s.cardId).length!==s.reps) throw Error('История не соответствует числу повторений')
+  const logCounts=new Map<string,number>(); for(const l of data.logs)logCounts.set(l.cardId,(logCounts.get(l.cardId)??0)+1)
+  for(const s of data.states) if((logCounts.get(s.cardId)??0)!==s.reps) throw Error('История не соответствует числу повторений')
   return data
 }
 export async function exportBackup(database:MathDB=db) {
