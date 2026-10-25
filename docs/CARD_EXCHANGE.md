@@ -16,7 +16,7 @@
 - JSON Schema: `public/formats/mathrecall-card-exchange.v1.schema.json` (Draft 2020-12).
 - Пример со всеми тремя типами: `public/formats/mathrecall-card-exchange.v1.example.json`.
 - Источник схемы: `src/import/schema.ts`. Схема для публикации создаётся из Zod, а не поддерживается вручную отдельно.
-- Обновление файлов: `pnpm generate:exchange`. Генератор использует встроенную поддержку TypeScript в Node с `--experimental-strip-types`.
+- Обновление файлов: `pnpm generate:exchange`. Для генератора используется Node.js с `--experimental-strip-types`.
 - Тест сверяет опубликованные Schema и пример с текущими Zod-схемами и образцом.
 
 ## Структура

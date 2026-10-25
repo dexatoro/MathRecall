@@ -1,9 +1,36 @@
+# Dependencies, builds and local verification artifacts
 node_modules/
 dist/
 work/
+outputs/
 playwright-report/
 test-results/
+coverage/
 *.tsbuildinfo
+*.log
+
+# Local settings and credentials
 .DS_Store
-outputs/MathRecall-source.zip
-outputs/MathRecall-static.zip
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/
+.codex/
+.agents/
+
+# User imports and backups: ignore JSON by default everywhere.
+# Only the app configuration and public exchange format belong in Git.
+*.[jJ][sS][oO][nN]
+*.[jJ][sS][oO][nN][lL]
+*.[nN][dD][jJ][sS][oO][nN]
+!/package.json
+!/tsconfig.json
+!/.prettierrc.json
+!/public/formats/mathrecall-card-exchange.v1.schema.json
+!/public/formats/mathrecall-card-exchange.v1.example.json
+
+# Optional directories for personal materials
+imports/
+backups/
+data/
