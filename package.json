@@ -8,31 +8,38 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "format": "prettier --write src vite.config.ts",
+    "format:check": "prettier --check src vite.config.ts"
   },
   "dependencies": {
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
     "dexie": "^4.2.0",
     "dexie-react-hooks": "^4.2.0",
-    "ts-fsrs": "^5.4.2",
-    "zod": "^4.1.0",
     "katex": "^0.16.25",
+    "lucide-react": "^0.468.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "react-markdown": "^10.1.0",
-    "remark-math": "^6.0.0",
-    "remark-gfm": "^4.0.1",
     "rehype-katex": "^7.0.1",
-    "lucide-react": "^0.468.0"
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
+    "ts-fsrs": "^5.4.2",
+    "zod": "^4.1.0"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.1.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "fake-indexeddb": "^6.2.0",
+    "prettier": "^3.9.10",
+    "tailwindcss": "^4.1.0",
     "typescript": "~5.9.3",
     "vite": "^7.1.0",
-    "@vitejs/plugin-react": "^5.0.0",
-    "tailwindcss": "^4.1.0",
-    "@tailwindcss/vite": "^4.1.0",
-    "vitest": "^3.2.0",
-    "fake-indexeddb": "^6.2.0",
-    "@types/react": "^19.2.0",
-    "@types/react-dom": "^19.2.0"
-  }
+    "vitest": "^3.2.0"
+  },
+  "engines": {
+    "node": "^22.12.0 || >=24.0.0"
+  },
+  "packageManager": "pnpm@11.25.0"
 }
