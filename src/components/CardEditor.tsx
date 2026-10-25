@@ -205,7 +205,8 @@ export function CardEditor({
             </label>
             <label>
               Источник
-              <input
+              <textarea
+                rows={2}
                 maxLength={2000}
                 value={value.source}
                 onChange={(e) => field('source', e.target.value)}

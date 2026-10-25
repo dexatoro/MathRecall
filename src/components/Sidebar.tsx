@@ -1,5 +1,6 @@
 import {
   CalendarDays,
+  FileJson,
   ChevronRight,
   Library,
   TrendingUp,
@@ -90,6 +91,7 @@ export function Sidebar({
           [
             { id: 'today', icon: CalendarDays },
             { id: 'library', icon: Library },
+            { id: 'import', icon: FileJson },
             { id: 'stats', icon: TrendingUp },
           ] as const
         ).map(({ id, icon: Icon }) => (
@@ -147,7 +149,7 @@ export function Sidebar({
         </button>
         <div className="sidebar-footer">
           <span>
-            MathRecall <span className="muted">/ MVP 0.1</span>
+            MathRecall <span className="muted">/ MVP 0.2</span>
           </span>
           <button className="icon-button tiny" aria-label="Переключить тему" onClick={onTheme}>
             {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}

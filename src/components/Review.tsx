@@ -153,7 +153,12 @@ export function Review({
                       : 'ОТВЕТ'}
                 </div>
                 <MathText>{card.answer}</MathText>
-                {card.source && <p className="muted small">Источник: {card.source}</p>}
+                {card.source && (
+                  <div className="muted small source-references">
+                    <h3>Источник</h3>
+                    <MathText>{card.source}</MathText>
+                  </div>
+                )}
               </div>
               <p className="muted small center">Насколько хорошо вы вспомнили ответ?</p>
               <div className="rating-grid">

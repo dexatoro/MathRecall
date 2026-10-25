@@ -31,6 +31,7 @@ import { MathText } from './components/MathText'
 import { Review } from './components/Review'
 import { Statistics } from './components/Statistics'
 import { SettingsView } from './components/SettingsView'
+import { ImportPage } from './components/ImportPage'
 import { Sidebar } from './components/Sidebar'
 import { CardList } from './components/CardList'
 import { DailySummary } from './components/DailySummary'
@@ -267,7 +268,9 @@ function App() {
                     ? ticket?.description || 'Предметы, темы и карточки — всё связано между собой.'
                     : page === 'stats'
                       ? 'Реальные повторения и предстоящая нагрузка.'
-                      : 'Настройте обучение и сохраните резервную копию.'}
+                      : page === 'import'
+                        ? 'Карточки из внешних источников — через проверку черновиков.'
+                        : 'Настройте обучение и сохраните резервную копию.'}
               </p>
             </div>
             {(page === 'today' || page === 'library') && (
@@ -601,6 +604,7 @@ function App() {
               )}
             </>
           )}
+          {page === 'import' && <ImportPage data={data} />}
           {page === 'stats' && <Statistics data={data} now={now} />}
           {page === 'settings' && (
             <SettingsView
@@ -644,7 +648,12 @@ function App() {
                 <MathText>{h}</MathText>
               </div>
             ))}
-            {detail.source && <p className="muted small">Источник: {detail.source}</p>}
+            {detail.source && (
+              <div className="muted small source-references">
+                <h3>Источник</h3>
+                <MathText>{detail.source}</MathText>
+              </div>
+            )}
             <div className="detail-meta">
               <p>Состояние: {stateLabels[states.get(detail.id)?.state ?? 0]}</p>
               <p>

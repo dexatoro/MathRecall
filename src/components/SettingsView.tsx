@@ -94,9 +94,9 @@ export function SettingsView({
             <Download size={16} /> Экспорт JSON
           </button>
           <label className="button file-button">
-            <Upload size={16} /> Импорт JSON
+            <Upload size={16} /> Восстановить копию JSON
             <input
-              aria-label="Импорт JSON"
+              aria-label="Восстановить резервную копию JSON"
               type="file"
               accept=".json,application/json"
               onChange={(e) => {
@@ -122,7 +122,8 @@ export function SettingsView({
           </label>
         </div>
         <p className="muted small">
-          Проверка Zod и связей перед атомарной заменой. Повреждённый файл не изменит библиотеку.
+          Полная копия библиотеки, не формат обмена карточками. Черновики импорта не входят в копию
+          и сохраняются при восстановлении. Повреждённый файл не изменит библиотеку.
         </p>
       </section>
       <section className="panel">
