@@ -75,7 +75,18 @@ export async function exportBackup(database: MathDB = db) {
 export async function importBackup(input: unknown, database: MathDB = db) {
   const parsed = validateBackup(input)
   await database.transaction('rw', database.tables, async () => {
-    for (const table of database.tables) await table.clear()
+    // Drafts use names rather than live-library IDs and survive a library restore.
+    for (const key of [
+      'subjects',
+      'topics',
+      'tickets',
+      'cards',
+      'links',
+      'states',
+      'logs',
+      'settings',
+    ] as const)
+      await database[key].clear()
     await database.subjects.bulkAdd(parsed.subjects)
     await database.topics.bulkAdd(parsed.topics)
     await database.tickets.bulkAdd(parsed.tickets)

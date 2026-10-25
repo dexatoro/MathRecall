@@ -1,3 +1,4 @@
+import type { CardDraft, ImportBatch } from './import/model'
 import Dexie, { type EntityTable } from 'dexie'
 import type {
   Subject,
@@ -19,6 +20,8 @@ export class MathDB extends Dexie {
   states!: EntityTable<ReviewState, 'cardId'>
   logs!: EntityTable<ReviewLog, 'id'>
   settings!: EntityTable<Settings, 'id'>
+  cardDrafts!: EntityTable<CardDraft, 'id'>
+  importBatches!: EntityTable<ImportBatch, 'id'>
   constructor(name = 'MathRecall') {
     super(name)
     this.version(1).stores({
@@ -30,6 +33,10 @@ export class MathDB extends Dexie {
       states: 'cardId,due,state',
       logs: 'id,cardId,review',
       settings: 'id',
+    })
+    this.version(2).stores({
+      cardDrafts: 'id,batchId,status,createdAt',
+      importBatches: 'id,createdAt',
     })
   }
   async snapshot(): Promise<Snapshot> {
